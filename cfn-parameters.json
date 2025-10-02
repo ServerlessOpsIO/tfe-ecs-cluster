@@ -1,7 +1,7 @@
 {
   "VpcId": "/org/networking/VpcId",
   "VpcSubnets": "/org/networking/VpcPublicSubnets",
-  "Hostname": "tfe",
+  "Hostname": "tfe.versant.serverlessops.io",
   "DnsZoneId": "/org/dns/ZoneId",
   "Domain": "development",
   "System": "versant",

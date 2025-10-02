@@ -1,0 +1,10 @@
+{
+  "VpcId": "/org/networking/VpcId",
+  "VpcSubnets": "/org/networking/VpcPublicSubnets",
+  "Hostname": "tfe",
+  "DnsZoneId": "/org/dns/ZoneId",
+  "Domain": "development",
+  "System": "versant",
+  "Component": $env.GITHUB_REPOSITORY_NAME_PART_SLUG_CS,
+  "CodeBranch": $env.GITHUB_REF_SLUG_CS
+}

@@ -1,0 +1,17 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tfe-ecs-cluster
+  description: Terraform Enterprise
+  namespace: default
+  annotations:
+    github.com/project-slug: ServerlessOpsIO/tfe-ecs-cluster
+    io.serverlessops/cluster-type: ecs
+spec:
+  type: container-cluster
+  lifecycle: production
+  owner: group:default/00gjdgxs1ur6lsu
+  system: system:default/versant
+  dependsOn:
+    - resource:default/aws-441198202749

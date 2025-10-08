@@ -75,6 +75,7 @@ Resources:
       DomainValidationOptions:
         - DomainName: !Ref Hostname
           HostedZoneId: !Ref DnsZoneId
+      CertificateExport: ENABLED
 
   ## ALB setup
   EcsAlb:

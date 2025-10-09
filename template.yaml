@@ -76,6 +76,7 @@ Resources:
         - DomainName: !Ref Hostname
           HostedZoneId: !Ref DnsZoneId
       CertificateExport: ENABLED
+      KeyAlgorithm: EC_prime256v1
 
   ## ALB setup
   EcsAlb:

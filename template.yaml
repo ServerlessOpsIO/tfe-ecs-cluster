@@ -109,25 +109,6 @@ Resources:
   EcsCluster:
     Type: AWS::ECS::Cluster
 
-  ## ECS Network Access
-  ContainerSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: Fargate container access
-      VpcId: !Ref 'VpcId'
-
-
-  ContainerAlbSecurityGroupIngress:
-    Type: AWS::EC2::SecurityGroupIngress
-    Properties:
-      Description: Ingress from ALBs
-      GroupId: !Ref ContainerSecurityGroup
-      # All TCP ports
-      IpProtocol: tcp
-      FromPort: 80
-      ToPort: 65535
-      SourceSecurityGroupId: !Ref EcsAlbSecurityGroup
-
 
   # SSM Values
   EcsClusterNameSsmParam:
@@ -138,20 +119,18 @@ Resources:
       Name: !Sub /${Domain}/${System}/${Component}/${CodeBranch}/EcsClusterName
       Value: !Ref EcsCluster
 
-  ContainerSecurityGroupIdSsmParam:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Type: String
-      Description: Name of ECS Cluster
-      Name: !Sub /${Domain}/${System}/${Component}/${CodeBranch}/ContainerSecurityGroupId
-      Value: !Ref ContainerSecurityGroup
-
-
   EcsAlbListenerArnSsmParam:
     Type: AWS::SSM::Parameter
     Properties:
       Type: String
       Description: ARN of cluster ALB
-      Name: !Sub /${Domain}/${System}/${Component}/${CodeBranch}/EcsAlbListenerArn
+      Name: !Sub /${Domain}/${System}/${Component}/${CodeBranch}/ClusterAlbListenerArn
       Value: !Ref EcsAlbListener
 
+  ClusterAlbSecurityGroupIdSsmParam:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Type: String
+      Description: Name of ECS Cluster
+      Name: !Sub /${Domain}/${System}/${Component}/${CodeBranch}/ClusterAlbSecurityGroupId
+      Value: !Ref EcsAlbSecurityGroup
